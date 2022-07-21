@@ -17,8 +17,8 @@ if len(list_item) == 19:
     import torch.nn as nn
 
     batch_size = 10
-    embedding_dim = 64
-    hidden_dim = 128
+    embedding_dim = 16
+    hidden_dim = 32
     item_number = 256
     class LSTMRating(nn.Module):
         def __init__(self, embedding_dim, hidden_dim, num_items):
@@ -37,7 +37,7 @@ if len(list_item) == 19:
             return pred
         
     model_load = LSTMRating(embedding_dim, hidden_dim, item_number)
-    model_load.load_state_dict(torch.load(arg2 + "Content/best_model_state_dict.txt"))
+    model_load.load_state_dict(torch.load(arg2 + "Content/best_model_state_dict.pt"))
     model_load.eval()
 
     list_item = torch.Tensor(list_item)
